@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   async function handleOnSubmit(e) {
@@ -8,14 +8,16 @@ export default function Home() {
 
     const formData = {};
 
-    Array.from(e.currentTarget.elements).forEach(field => {
-      if ( !field.name ) return;
+    Array.from(e.currentTarget.elements).forEach((field) => {
+      if (!field.name) return;
       formData[field.name] = field.value;
     });
 
-    await fetch('/api/mail', {
-      method: 'POST',
-      body: JSON.stringify(formData)
+    console.log("formData :>> ", formData);
+
+    await fetch("/api/mail", {
+      method: "POST",
+      body: JSON.stringify(formData),
     });
   }
   return (
@@ -27,13 +29,9 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Contact Me
-        </h1>
+        <h1 className={styles.title}>Contact Me</h1>
 
-        <p className={styles.description}>
-          Please be human!
-        </p>
+        <p className={styles.description}>Please be human!</p>
 
         <div className={styles.grid}>
           <style jsx>{`
@@ -43,22 +41,22 @@ export default function Home() {
 
             label {
               display: block;
-              margin-bottom: .2em;
+              margin-bottom: 0.2em;
             }
 
             input,
             textarea {
               width: 100%;
-              padding: .8em;
+              padding: 0.8em;
             }
 
             button {
               color: white;
               font-size: 1em;
               background-color: blueviolet;
-              padding: .8em 1em;
+              padding: 0.8em 1em;
               border: none;
-              border-radius: .2em;
+              border-radius: 0.2em;
             }
           `}</style>
           <form onSubmit={handleOnSubmit}>
@@ -81,5 +79,5 @@ export default function Home() {
         </div>
       </main>
     </div>
-  )
+  );
 }

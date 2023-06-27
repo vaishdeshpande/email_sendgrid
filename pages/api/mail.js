@@ -1,4 +1,4 @@
-const mail = require('@sendgrid/mail');
+const mail = require("@sendgrid/mail");
 
 mail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -12,12 +12,15 @@ export default async (req, res) => {
   `;
 
   await mail.send({
-    to: 'to.name@email.com',
-    from: 'from.name@email.com',
-    subject: 'New Message!',
+    to: "aditya.n.tripathi9@gmail.com",
+    from: {
+      email: "we@thegoodgametheory.com",
+      name: "TheGoodGameTheory",
+    },
+    subject: "New Message!",
     text: message,
-    html: message.replace(/\r\n/g, '<br>'),
+    html: message.replace(/\r\n/g, "<br>"),
   });
 
-  res.status(200).json({ status: 'Ok' });
-}
+  res.status(200).json({ status: "Ok" });
+};
